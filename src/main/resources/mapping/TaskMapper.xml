@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cheng.targetmanager.mapper.TaskMapper">
+
+    <resultMap type="task" id="TaskInfo">
+        <result column="id" property="id"/>
+        <result column="current_progress" property="currentProgress"/>
+        <result column="target_progress" property="targetProgress"/>
+        <result column="start_date" property="startDate"/>
+        <result column="last_modified_date" property="lastModifiedDate"/>
+    </resultMap>
+
+    <insert id="add" parameterType="task">
+        insert into task (current_progress, target_progress, start_date, last_modified_date, name)
+        values (#{currentProgress}, #{targetProgress}, #{startDate}, #{lastModifiedDate}, #{name})
+    </insert>
+
+    <select id="getCount" resultType="int">
+        select count(*)
+        from task;
+    </select>
+</mapper>
