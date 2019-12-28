@@ -21,4 +21,10 @@
         select count(*)
         from task;
     </select>
+
+    <select id="getTasks" resultMap="TaskInfo" parameterType="map">
+        select *
+        from task
+        limit #{begin},#{limit}
+    </select>
 </mapper>
